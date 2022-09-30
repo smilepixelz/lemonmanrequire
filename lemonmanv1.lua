@@ -87,7 +87,6 @@ end
 
 fx.new({StartingSize = Vector3.new(5,5,5), EndingSize = 5, RandomizerValue = 5, Color = Color3.fromRGB(255,255,0)}):effect()
 
-
 --[[
   
 Docs:
