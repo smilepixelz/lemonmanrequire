@@ -28,12 +28,6 @@ local function CreateSound(vol, id, pitch)
   s.PlayOnRemove = true
   s:Destroy()
 end
-
-
-char:FindFirstChild("Animate"):Destroy()
---roblox animate script interfiere with cframe
---so i destroy it
-
 local function create(class, properties)
   local newclass = Instance.new(class);
   for _,v in pairs(properties) do 
@@ -101,6 +95,15 @@ end
 
 fx.new({StartingSize = Vector3.new(5,5,5), EndingSize = 5, RandomizerValue = 5, Color = Color3.fromRGB(255,255,0)}):effect()
 
+local baseCframes = {};
+
+baseCFrames['Right Shoulder']=CFrame.new(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0);
+baseCFrames['Left Shoulder']=CFrame.new(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0);
+baseCFrames['Right Hip']=CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0);
+baseCFrames['Left Hip']=CFrame.new(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0);
+baseCFrames['Neck']=CFrame.new(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0);
+baseCFrames['RootJoint']=CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0);
+
 function playAnimation(keyframes)
     local motor6Ds = {}
     motor6Ds["Torso"] = char.HumanoidRootPart.RootJoint
@@ -123,7 +126,7 @@ function playAnimation(keyframes)
           EasingStyle = "Quad",
           EasingDirection = "InOut",
           Goal = {
-            C0 = motor6Ds["Torso"].C0 * rootCF
+            C0 = baseCFrames[_] * rootCF
           },
           Yield = false;
         });
@@ -137,7 +140,7 @@ function playAnimation(keyframes)
                       EasingStyle = "Linear",
                       EasingDirection = "InOut",
                       Goal = {
-                        C0 = motor6Ds[_].C0 * v.CFrame
+                        C0 = baseCFrames[_] * v.CFrame
                       },
                       Yield = false;
                     });
