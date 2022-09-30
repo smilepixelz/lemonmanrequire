@@ -97,12 +97,12 @@ fx.new({StartingSize = Vector3.new(5,5,5), EndingSize = 5, RandomizerValue = 5, 
 
 local baseCFrames = {};
 
-baseCFrames['Right Shoulder']=CFrame.new(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0);
-baseCFrames['Left Shoulder']=CFrame.new(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0);
-baseCFrames['Right Hip']=CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0);
-baseCFrames['Left Hip']=CFrame.new(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0);
-baseCFrames['Neck']=CFrame.new(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0);
-baseCFrames['RootJoint']=CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0);
+baseCFrames['Right Arm']=CFrame.new(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0);
+baseCFrames['Left Arm']=CFrame.new(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0);
+baseCFrames['Right Leg']=CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0);
+baseCFrames['Left Leg']=CFrame.new(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0);
+baseCFrames['Head']=CFrame.new(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0);
+baseCFrames['Torso']=CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0);
 
 function playAnimation(keyframes)
     local motor6Ds = {}
