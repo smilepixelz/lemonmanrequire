@@ -143,7 +143,7 @@ function playAnimation(keyframes)
     end
 end
 
-playAnimation(require(script.IdleTest));
+playAnimation(require(script.IdleTest).KeyFrames);
 
 --[[
   
