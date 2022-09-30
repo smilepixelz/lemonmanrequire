@@ -125,6 +125,7 @@ function playAnimation(keyframes)
             for _,v in pairs(root) do 
                 if _ ~= "CFrame" then 
                     if motor6Ds[_] then 
+                        print(motor6Ds[_], v.CFrame)
                         tween({
                           Part = motor6Ds[_],
                           Time = tim,
