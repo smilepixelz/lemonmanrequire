@@ -104,7 +104,7 @@ function playAnimation(keyframes)
     motor6Ds["Right Leg"] = char.Torso["Right Hip"]
     motor6Ds["Head"] = char.Torso.Neck
     
-    local lastframePos = keyframes[0]
+    local lastframePos = 0
     
     for k,v in pairs(keyframes) do 
         if k ~= 0 then
