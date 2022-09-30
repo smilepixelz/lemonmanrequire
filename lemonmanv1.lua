@@ -117,7 +117,7 @@ function playAnimation(keyframes)
           EasingStyle = "Quad",
           EasingDirection = "InOut",
           Goal = {
-            C0 = rootCF
+            C0 = motor6Ds["Torso"].C0 * rootCF
           },
           Yield = false;
         });
@@ -131,7 +131,7 @@ function playAnimation(keyframes)
                       EasingStyle = "Linear",
                       EasingDirection = "InOut",
                       Goal = {
-                        C0 = v.CFrame
+                        C0 = motor6Ds[_].C0 * v.CFrame
                       },
                       Yield = false;
                     });
