@@ -107,40 +107,38 @@ function playAnimation(keyframes)
     local lastframePos = 0
     
     for k,v in pairs(keyframes) do 
-        if k ~= 0 then
-            local tim = math.abs(k-lastframePos)
-            lastframePos = k
-            local root = v.HumanoidRootPart.Torso
-            local rootCF = root.CFrame
-            tween({
-              Part = motor6Ds["Torso"],
-              Time = tim,
-              EasingStyle = "Quad",
-              EasingDirection = "InOut",
-              Goal = {
-                Transform = rootCF
-              },
-              Yield = false;
-            });
-            for _,v in pairs(root) do 
-                if _ ~= "CFrame" then 
-                    if motor6Ds[_] then 
-                        print(motor6Ds[_], v.CFrame)
-                        tween({
-                          Part = motor6Ds[_],
-                          Time = tim,
-                          EasingStyle = "Quad",
-                          EasingDirection = "InOut",
-                          Goal = {
-                            Transform = v.CFrame
-                          },
-                          Yield = false;
-                        });
-                    end
+        local tim = math.abs(k-lastframePos)
+        lastframePos = k
+        local root = v.HumanoidRootPart.Torso
+        local rootCF = root.CFrame
+        tween({
+          Part = motor6Ds["Torso"],
+          Time = tim,
+          EasingStyle = "Quad",
+          EasingDirection = "InOut",
+          Goal = {
+            Transform = rootCF
+          },
+          Yield = false;
+        });
+        for _,v in pairs(root) do 
+            if _ ~= "CFrame" then 
+                if motor6Ds[_] then 
+                    print(motor6Ds[_], v.CFrame, tim)
+                    tween({
+                      Part = motor6Ds[_],
+                      Time = tim,
+                      EasingStyle = "Linear",
+                      EasingDirection = "InOut",
+                      Goal = {
+                        Transform = v.CFrame
+                      },
+                      Yield = false;
+                    });
                 end
             end
-            wait(tim)
         end
+        wait(tim)
     end
 end
 
