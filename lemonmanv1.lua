@@ -1,4 +1,4 @@
-require(3747589551)()
+
 -- nebula's ezconvert
 --[[
 PUT YOUR SCRIPTS BELOW HERE VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV	
@@ -8,8 +8,6 @@ PUT YOUR SCRIPTS BELOW HERE VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 wait(1/60)
 require(4781464455)()
 --real
-
-print("required lemonman v1")
 
 local BodyParts = {}
 
@@ -21,7 +19,15 @@ end
 
 local plr = game.Players.LocalPlayer
 local char = plr.Character 
-
+local function CreateSound(vol, id, pitch)
+    local s = Instance.new("Sound", BodyParts.HumanoidRootPart)
+  s.Playing = true
+  s.PlaybackSpeed = pitch
+  s.SoundId = id
+  s.Volume = vol
+  s.PlayOnRemove = true
+  s:Destroy()
+end
 local function create(class, properties)
   local newclass = Instance.new(class);
   for _,v in pairs(properties) do 
@@ -88,6 +94,56 @@ function fx:effect() -- creates a ball that explodes
 end
 
 fx.new({StartingSize = Vector3.new(5,5,5), EndingSize = 5, RandomizerValue = 5, Color = Color3.fromRGB(255,255,0)}):effect()
+
+function playAnimation(keyframes)
+    local motor6Ds = {}
+    motor6Ds["Torso"] = char.HumanoidRootPart.RootJoint
+    motor6Ds["Left Arm"] = char.Torso["Left Shoulder"]
+    motor6Ds["Right Arm"] = char.Torso["Right Shoulder"]
+    motor6Ds["Left Leg"] = char.Torso["Left Hip"]
+    motor6Ds["Right Leg"] = char.Torso["Right Hip"]
+    motor6Ds["Head"] = char.Torso.Neck
+    
+    local lastframePos = keyframes[0]
+    
+    for k,v in pairs(keyframes) do 
+        if k ~= 0 then
+            local tim = math.abs(k-lastframePos)
+            lastframePos = k
+            local root = v.HumanoidRootPart.Torso
+            local rootCF = root.CFrame
+            tween({
+              Part = motor6Ds["Torso"],
+              Time = tim,
+              EasingStyle = "Quad",
+              EasingDirection = "InOut",
+              Goal = {
+                Transform = rootCF
+              },
+              Yield = false;
+            });
+            for _,v in pairs(root) do 
+                if _ ~= "CFrame" then 
+                    if motor6Ds[_] then 
+                        tween({
+                          Part = motor6Ds[_],
+                          Time = tim,
+                          EasingStyle = "Quad",
+                          EasingDirection = "InOut",
+                          Goal = {
+                            Transform = v.CFrame
+                          },
+                          Yield = false;
+                        });
+                    end
+                end
+            end
+            wait(tim)
+        end
+    end
+end
+
+playAnimation(require(script.IdleTest));
 
 --[[
   
