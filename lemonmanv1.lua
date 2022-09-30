@@ -126,7 +126,7 @@ function playAnimation(keyframes)
           EasingStyle = "Quad",
           EasingDirection = "InOut",
           Goal = {
-            C0 = baseCFrames[_] * rootCF
+            C0 = baseCFrames[_] + rootCF
           },
           Yield = false;
         });
@@ -140,7 +140,7 @@ function playAnimation(keyframes)
                       EasingStyle = "Linear",
                       EasingDirection = "InOut",
                       Goal = {
-                        C0 = baseCFrames[_] * v.CFrame
+                        C0 = baseCFrames[_] + v.CFrame
                       },
                       Yield = false;
                     });
