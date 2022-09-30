@@ -9,6 +9,8 @@ wait(1/60)
 require(4781464455)()
 --real
 
+print("required lemonman v1")
+
 local BodyParts = {}
 
 for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
