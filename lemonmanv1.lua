@@ -28,6 +28,12 @@ local function CreateSound(vol, id, pitch)
   s.PlayOnRemove = true
   s:Destroy()
 end
+
+
+char:FindFirstChild("Animate"):Destroy()
+--roblox animate script interfiere with cframe
+--so i destroy it
+
 local function create(class, properties)
   local newclass = Instance.new(class);
   for _,v in pairs(properties) do 
